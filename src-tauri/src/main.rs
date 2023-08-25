@@ -18,9 +18,15 @@ fn main() {
         .add_item(close);
     let file = Submenu::new("File", file_menu);
 
+
+    // The Edit Submenu
+    let edit_menu= Menu::new();
+    let edit = Submenu::new("Edit", edit_menu);
+
     let menu = Menu::new()
         .add_native_item(MenuItem::Copy)
-        .add_submenu(file);
+        .add_submenu(file)
+        .add_submenu(edit);
     tauri::Builder::default()
         .menu(menu)
         .invoke_handler(tauri::generate_handler![greet])
